@@ -27,11 +27,14 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-  	Route::get('/', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
+  	Route::get('/', ['as' => 'spareparts.index', 'uses' => 'SparepartsController@index']);
   	Route::resource('spareparts', 'SparepartsController');
   	Route::resource('monitoring', 'MonitoringController');
+  	Route::resource('devices', 'DeviceController');
+  	Route::resource('settings', 'SettingsController');
 });
 
 Route::group(['prefix' => 'api'], function () {
+	Route::post('logdevice', ['as' => 'monitoring.logdevice', 'uses' => 'MonitoringController@logdevice']);
   	Route::get('devices', ['as' => 'monitoring.devices', 'uses' => 'MonitoringController@devices']);
 });

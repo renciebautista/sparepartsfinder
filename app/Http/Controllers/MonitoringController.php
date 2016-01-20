@@ -20,4 +20,22 @@ class MonitoringController extends Controller
   		$devices = Device::all();
   		return response()->json($devices);
   	}
+
+  	public function logdevice(Request $request)
+    {
+        $uid = $request->uid;
+        $status = $request->status;
+        
+        $device = Device::where('uid',$uid)->first();
+        if(!empty($device)){
+        	$device->status = $status;
+        	$device->update();
+
+        	$msg = 'Device status updated';
+        }else{
+        	$msg = 'Device not found';
+        }
+
+        return response()->json(['msg' => $msg],200);
+    }
 }
