@@ -27,8 +27,11 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-  Route::get('/', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
-  Route::resource('spareparts', 'SparepartsController');
-  Route::resource('monitoring', 'MonitoringController');
+  	Route::get('/', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
+  	Route::resource('spareparts', 'SparepartsController');
+  	Route::resource('monitoring', 'MonitoringController');
+});
 
+Route::group(['prefix' => 'api'], function () {
+  	Route::get('devices', ['as' => 'monitoring.devices', 'uses' => 'MonitoringController@devices']);
 });

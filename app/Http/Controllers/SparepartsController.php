@@ -14,7 +14,7 @@ class SparepartsController extends Controller
   	public function index(Request $request){
 		$request->flash();
 		$items = Item::search($request);
-		// dd($items);
+		// dd($request);
 		return view('spareparts.index',compact('items'));
   	}
 }
