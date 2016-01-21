@@ -48,7 +48,7 @@
 
 	  })
 	  .fail(function() {
-	    alert( "error occured" );
+	    //alert( "error occured" );
 	  });
 	}, 3000 );
 @stop
